@@ -1,0 +1,25 @@
+<?php
+/**
+  * Simple xmlrpc test
+  */
+function xmlrpc_test_get_data() {
+  $result = xmlrpc('http://betty.userland.com/RPC2', 'examples.getStateName', 10);
+  return $result;
+}
+
+function xmlrpc_test_menu() {
+  $items['xmlrpc'] = array(
+    'title' => 'XMLRPC Test!',
+    'page callback' => 'xmlrpc_test_page',
+    'access callback' => TRUE,
+    'expanded' => TRUE,
+  );
+  return $items;
+}
+
+function xmlrpc_test_page() {
+  $page = xmlrpc_test_get_data();
+  $items = '<p>' . t('Requesting a state name from: http://betty.userland.com/RPC2') . '</p>';
+  $items .= '<p>' . t($page) . '</p>';
+  return $items;
+}

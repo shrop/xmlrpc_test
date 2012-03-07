@@ -1,0 +1,4 @@
+
+name = XMLRPC Test
+description = A very simple xmlrpc test!
+core = 6.x
